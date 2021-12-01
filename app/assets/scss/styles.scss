@@ -1,0 +1,112 @@
+@import 'vars.scss';
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('~@/assets/fonts/Roboto-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('~@/assets/fonts/Roboto-regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+  font-size: 62.5%;
+}
+
+
+body {
+  font-size: 160%;
+  font-family: var(--font);
+  line-height: 1.50;
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  min-width: 320px;
+  max-width: 1920px;
+  margin: 0 auto;
+  color: var(--dark_gray);
+  background: var(--white);
+  font-variant-ligatures: none;
+}
+
+.app{
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+aside,
+main,
+time {
+  display: block;
+}
+
+input,
+textarea{
+  &:focus{
+    outline: none;
+  }
+  font-family: var(--font);
+  font-weight: 400;  
+  border-radius: 0;
+  -webkit-appearance: none;
+  overflow: hidden;
+  &::placeholder{
+  }
+}
+
+button{
+  font-family: var(--font);
+  overflow: hidden;  
+  -webkit-appearance: none;
+  cursor: pointer;
+  &:hover,
+  &:focus {    
+    outline: none;
+    -webkit-appearance: none;
+  }
+}
+a {
+  color: var( --black);
+  transition: 0.3s;
+  &:hover,
+  &:focus {    
+    outline: none;
+    color: var(--black);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+.container{
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.page{
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  margin: 1em auto;
+}
+.page__main{
+  border-left: .3em solid var(--black);
+}

@@ -1,0 +1,56 @@
+{
+  "roles":[
+    {
+      "id": 1,
+      "group_id": 1,
+      "name": "имя 1",
+      "hashtags": "admin"
+    },
+    {
+      "id": 2,
+      "group_id": 1,
+      "name": "name 2",
+      "hashtags": "billing"
+    },
+    {
+      "id": 3,
+      "group_id": 1,
+      "name": "name 3",
+      "hashtags": "God mode"
+    }
+  ],
+  "groups":[
+    {
+      "id": 1,
+      "name": "admins"
+    },
+    {
+      "id": 2,
+      "name": "General Maangers"
+    },
+    {
+      "id": 3,
+      "name": "Maangers - Tech"
+    },
+    {
+      "id": 4,
+      "name": "Maangers - Billing"
+    }
+  ],
+  "hashtags":[
+    {
+      "id": 1,
+      "name": "admin"
+    },
+    {
+      "id": 2,
+      "name": "billing"
+    },
+    {
+      "id": 3,
+      "name": "God mode"
+    }
+  ]
+
+
+}

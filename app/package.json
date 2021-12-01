@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "mock": "json-server -w db.json -p 4200 -d 100",
+    "serve": "concurrently \"npm run dev\" \"npm run mock\""
+  },
+  "dependencies": {
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7",
+    "@nuxtjs/device": "^2.1.0",
+    "cookie-universal-nuxt": "^2.1.5",
+    "vue-ultimate-skeleton-cards": "^1.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "sass": "^1.35.2",
+    "sass-loader": "^10.2.0",
+    "json-server": "^0.16.3"
+  }
+}
