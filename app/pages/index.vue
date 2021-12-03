@@ -10,7 +10,16 @@
       />
     </aside>
     <main class="page__main">
-55
+      <header class="page-header">
+        <h1 class="page-title">Groups</h1>
+        <Search 
+        @getPrompt="getPrompt($event)" 
+        @getResultSearch="getResultSearch($event)" 
+        :promptList="promptList"
+        @clearPrompt="promptList = null"
+        />
+      </header>
+      {{rolesList}}
     </main>
   </div>
 </template>
@@ -21,7 +30,8 @@ export default {
   mixins: [global],
   data(){
     return{
-
+      rolesList: null,
+      promptList: null,
       groupsList: null
     }
   },
@@ -32,6 +42,22 @@ export default {
     this.$store.commit('setShowSkeleton', false);
   },
   methods:{
+    async getResultSearch(text){
+      
+      this.rolesList =  await this.fetchData(process.env.fakeUrl + `roles?q=${text}`);
+
+    },
+    async getPrompt(text){
+     
+      if(text.length > 2){
+        this.promptList =  await this.fetchData(process.env.fakeUrl + `roles?q=${text}`);
+
+        console.log('promptList.length', this.promptList.length)
+        console.log('promptList', this.promptList)
+      }else{
+        this.promptList = null;
+      }
+    },
     async editGroup(item){
       let data = {
         "id": item.id,

@@ -108,8 +108,9 @@ a {
   margin: 1em auto;
 }
 .page__main{ 
-  background: var(--gray);
+  background: var(--white);
   border-left: .3em solid var(--black);
+  padding: 0 0 0 2em;
 }
 .btn{
   font-size: 1.6em;
@@ -129,4 +130,19 @@ a {
     background: var(--gray);
     color: var(--black);
   }
+}
+h1{
+  font-size: 3em;
+  line-height: 110%;
+  margin: 0;
+
+}
+.page-header{
+  border-bottom: 0.3em solid var(--black);
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 0 2em;
+  align-items: center;
+  justify-content: space-between;
 }

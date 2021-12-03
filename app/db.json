@@ -9,13 +9,25 @@
     {
       "id": 2,
       "group_id": 1,
-      "name": "name 2",
+      "name": "имя 2",
       "hashtags": "billing"
     },
     {
       "id": 3,
       "group_id": 1,
       "name": "name 3",
+      "hashtags": "God mode"
+    },
+    {
+      "id": 4,
+      "group_id": 1,
+      "name": "name 4",
+      "hashtags": "God mode"
+    },
+    {
+      "id": 5,
+      "group_id": 1,
+      "name": "media 3",
       "hashtags": "God mode"
     }
   ],

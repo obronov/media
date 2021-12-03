@@ -66,16 +66,16 @@ export default {
   grid-template-columns: 1fr auto;
   grid-gap: 0 1em;
   padding: 1em 2em;
-  background: var(--white);
+  background: var(--gray);
   border: .3em solid var(--gray);
   margin: 0 -.4em .4em 0;
   &.item-group_isActive{
     position: relative;
     border: .3em solid var(--black);
-    border-right: .3em solid var(--gray);
-    background: var(--gray);
+    border-right: .3em solid var(--white);
+    background: var(--white);
     & .item-group__name{
-      color: var(--white);
+      color: var(--black);
     }
   }
   &.item-group_edit:not(.item-group_isActive) .item-group__name{
