@@ -1,5 +1,5 @@
 {
-  "roles":[
+  "roles": [
     {
       "id": 1,
       "group_id": 1,
@@ -19,10 +19,10 @@
       "hashtags": "God mode"
     }
   ],
-  "groups":[
+  "groups": [
     {
       "id": 1,
-      "name": "admins"
+      "name": "admins34s"
     },
     {
       "id": 2,
@@ -30,14 +30,22 @@
     },
     {
       "id": 3,
-      "name": "Maangers - Tech"
+      "name": "Maangers - Techxcxzc"
     },
     {
       "id": 4,
       "name": "Maangers - Billing"
+    },
+    {
+      "id": 1638536686977,
+      "name": "New group"
+    },
+    {
+      "id": 1638536775201,
+      "name": "New group"
     }
   ],
-  "hashtags":[
+  "hashtags": [
     {
       "id": 1,
       "name": "admin"
@@ -51,6 +59,4 @@
       "name": "God mode"
     }
   ]
-
-
 }

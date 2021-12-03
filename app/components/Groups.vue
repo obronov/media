@@ -4,6 +4,9 @@
     :groupsList="groupsList"
     @editItem="editItem($event)"
     />
+    <div class="btn-add-groups">
+      <AppButton @click="$emit('click')">Add New Group</AppButton>
+    </div>
   </div>
 </template>
 
@@ -24,5 +27,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
+.btn-add-groups{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 2em 0 0;
+}
 </style>

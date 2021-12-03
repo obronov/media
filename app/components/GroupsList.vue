@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ul>
-      <li v-for="(item, index) in groupsList" :key="`group${index}`">
+    <ul class="group-list">
+      <li class="group-list__item" v-for="(item, index) in groupsList" :key="`group${index}`">
         <GroupsListItem :item="item" @editItem="editItem($event)"/>
       </li>
     </ul>
@@ -16,7 +16,6 @@ export default {
   },
   methods:{
     editItem(item){
-      console.log('item GroupsList', item)
       this.$emit("editItem", item)
     }
   }
@@ -25,5 +24,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
+.group-list{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.group-list__item{
+  
+}
 </style>
