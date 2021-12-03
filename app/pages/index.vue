@@ -11,7 +11,7 @@
     </aside>
     <main class="page__main">
       <header class="page-header">
-        <h1 class="page-title">Groups</h1>
+        <h1 class="page-title">Roles</h1>
         <Search 
         @getPrompt="getPrompt($event)" 
         @getResultSearch="getResultSearch($event)" 
@@ -43,17 +43,15 @@ export default {
   },
   methods:{
     async getResultSearch(text){
+      let getParams = this.$route.query.group_id;
       
-      this.rolesList =  await this.fetchData(process.env.fakeUrl + `roles?q=${text}`);
-
+      this.rolesList =  await this.fetchData(process.env.fakeUrl + `roles?group_id=${getParams}&q=${text}`);
     },
     async getPrompt(text){
-     
-      if(text.length > 2){
-        this.promptList =  await this.fetchData(process.env.fakeUrl + `roles?q=${text}`);
+      let getParams = this.$route.query.group_id;
 
-        console.log('promptList.length', this.promptList.length)
-        console.log('promptList', this.promptList)
+      if(text.length > 2){
+        this.promptList =  await this.fetchData(process.env.fakeUrl + `roles?group_id=${getParams}&q=${text}`);
       }else{
         this.promptList = null;
       }
