@@ -148,7 +148,16 @@ a {
   background: var(--black);
   color: var(--white);
 }
-
+.btn-success{
+  background: var(--green);
+  color: var(--black);
+  &:hover,
+  &:focus,
+  &:active{
+    background: var(--green);
+    color: var(--black);
+  }
+}
 h1{
   font-size: 3em;
   line-height: 1.1;

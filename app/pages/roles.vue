@@ -14,6 +14,7 @@
           :controls="formData"
           @oninputtext="updateControls($event)"
           @saveRole="saveRole()"
+          :saved="saved"
         />
       </main>
   </div>
@@ -30,6 +31,7 @@ export default {
       showControls: false,
       groupsList: null,
       hashtagsList: null,
+      saved: false,
       role: null,
       controls:[
         {
@@ -92,6 +94,8 @@ export default {
         "mark": false
       }
 
+      this.saved = false;
+
       this.controls.forEach(element => {
         
         if(element.key == 'name'){
@@ -116,7 +120,7 @@ export default {
         body: JSON.stringify(data)
       }); 
 
-      console.log('data', data)
+      this.saved = true;
     },
     updateControls(item){
       this.controls.forEach(element => {
@@ -176,6 +180,7 @@ export default {
   },
   watch:{
     async $route(){
+      this.saved = false;
       this.role = await this.fetchData(process.env.fakeUrl + `roles?id=${this.$route.query.role_id}`);
     }
   }

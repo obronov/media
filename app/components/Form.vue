@@ -9,8 +9,10 @@
         @click="$emit('saveRole')" 
         :title="'Save'"
         class="btn-primary"
+        :class="{'btn-success': saved}"
       >
-        Save
+        <span v-if="saved">Saved</span>
+        <span v-else>Save</span>        
       </AppButton>
     </div>
   </form>
@@ -20,7 +22,8 @@
 
 export default {
   props:{
-    controls: Array
+    controls: Array,
+    saved: Boolean
   }
 }
 
