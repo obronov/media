@@ -8,7 +8,7 @@
     </svg>
     </button>
     <ul class="search-prompt" v-if="!isEmptyArr(promptList)">
-      <li class="search-prompt__item" v-for="(item, index) in promptList" :key="index">
+      <li class="search-prompt__item" v-for="item in promptList" :key="item.id">
         <label class="search-prompt__label">
           <span>{{item.name}}</span>
           <input type="radio" :value="item.name" @change="useHint(item.name)">

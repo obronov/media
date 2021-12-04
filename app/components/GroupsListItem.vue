@@ -79,10 +79,10 @@ export default {
     }
   }
   &.item-group_edit:not(.item-group_isActive) .item-group__name{
-    border-color: var(--gray);
+    border-color: var(--white);
   }
   &.item-group_edit .item-group__name{
-    border-color: var(--white);
+    border-color: var(--gray);
   }
 }
 .item-group__name{

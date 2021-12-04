@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="group-list">
-      <li class="group-list__item" v-for="(item, index) in groupsList" :key="`group${index}`">
+      <li class="group-list__item" v-for="item in groupsList" :key="item.id">
         <GroupsListItem :item="item" @editItem="editItem($event)"/>
       </li>
     </ul>
@@ -29,7 +29,5 @@ export default {
   margin: 0;
   list-style: none;
 }
-.group-list__item{
-  
-}
+
 </style>

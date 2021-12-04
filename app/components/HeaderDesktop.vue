@@ -62,7 +62,7 @@ export default {
   padding: 0 0 .15em;
   text-transform: capitalize;
   transition: .3s;
-  &.nuxt-link-exact-active,
+  &.nuxt-link-active,
   &:hover,
   &:focus{
     border-color: var(--black);

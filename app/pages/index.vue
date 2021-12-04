@@ -1,26 +1,6 @@
 <template>
-  <div class="page container">
-    <aside class="page__sidebar">
-      <Groups 
-        class="groups"
-        v-if="!isEmptyArr(groupsList)" 
-        :groupsList="groupsList"
-        @editItem="editGroup($event)"
-        @click="addGroup()"
-      />
-    </aside>
-    <main class="page__main">
-      <header class="page-header">
-        <h1 class="page-title">Roles</h1>
-        <Search 
-        @getPrompt="getPrompt($event)" 
-        @getResultSearch="getResultSearch($event)" 
-        :promptList="promptList"
-        @clearPrompt="promptList = null"
-        />
-      </header>
-      {{rolesList}}
-    </main>
+  <div class="page page_main">
+    <Welcome/>
   </div>
 </template>
 
@@ -28,73 +8,16 @@
 import global from "~/mixins/global";
 export default {
   mixins: [global],
-  data(){
-    return{
-      rolesList: null,
-      promptList: null,
-      groupsList: null
-    }
-  },
-  async fetch(){
-
-    this.groupsList = await this.fetchData(process.env.fakeUrl + `groups`);
-
-    this.$store.commit('setShowSkeleton', false);
-  },
-  methods:{
-    async getResultSearch(text){
-      let getParams = this.$route.query.group_id;
-      
-      this.rolesList =  await this.fetchData(process.env.fakeUrl + `roles?group_id=${getParams}&q=${text}`);
-    },
-    async getPrompt(text){
-      let getParams = this.$route.query.group_id;
-
-      if(text.length > 2){
-        this.promptList =  await this.fetchData(process.env.fakeUrl + `roles?group_id=${getParams}&q=${text}`);
-      }else{
-        this.promptList = null;
-      }
-    },
-    async editGroup(item){
-      let data = {
-        "id": item.id,
-        "name": item.name
-      }
-
-      let response = await fetch(process.env.fakeUrl + `groups/${item.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-
-    },
-    async addGroup(){
-      let data = {
-        "id": Date.now(),
-        "name":"New group"
-      }
-      let response = await fetch(process.env.fakeUrl + `groups`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }); 
-
-      if(response.ok){
-        this.groupsList.push(data)
-      }
-
-    }
-  }
+  layout: 'mainPage'
 
 }
 </script>
 <style lang='scss' scoped>
-.groups{
-  font-size: 1rem;
+.page_main{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 </style>

@@ -3,32 +3,51 @@
     {
       "id": 1,
       "group_id": 1,
-      "name": "имя 1",
-      "hashtags": "admin"
+      "name": "Lorem Ipsum is simply",
+      "hashtags": "admin",
+      "mark": true
     },
     {
       "id": 2,
       "group_id": 2,
       "name": "имя 2",
-      "hashtags": "God mode"
+      "hashtags": "God mode",
+      "mark": true
     },
     {
       "id": 3,
-      "group_id": 1,
+      "group_id": 2,
       "name": "name 3",
-      "hashtags": "God mode"
+      "hashtags": "God mode",
+      "mark": true
     },
     {
       "id": 4,
       "group_id": 1,
       "name": "name 4",
-      "hashtags": "God mode"
+      "hashtags": "God mode",
+      "mark": true
     },
     {
       "id": 5,
       "group_id": 1,
       "name": "media 3",
-      "hashtags": "God mode"
+      "hashtags": "God mode",
+      "mark": true
+    },
+    {
+      "id": 1638616025545,
+      "group_id": null,
+      "name": "New role",
+      "hashtags": null,
+      "mark": false
+    },
+    {
+      "id": 1638616030145,
+      "group_id": null,
+      "name": "New role",
+      "hashtags": null,
+      "mark": false
     }
   ],
   "groups": [
@@ -38,7 +57,7 @@
     },
     {
       "id": 2,
-      "name": "General Maangers"
+      "name": "General Maangersghg"
     },
     {
       "id": 3,
@@ -54,6 +73,18 @@
     },
     {
       "id": 1638536775201,
+      "name": "New group"
+    },
+    {
+      "id": 1638604071457,
+      "name": "New group"
+    },
+    {
+      "id": 1638610494157,
+      "name": "New group"
+    },
+    {
+      "id": 1638610541125,
       "name": "New group"
     }
   ],

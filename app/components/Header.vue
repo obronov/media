@@ -13,7 +13,7 @@ export default {
       menu:[
         {
           "name": "groups",
-          "alias": "index",
+          "alias": "groups",
         },
         {
           "name": "roles",
