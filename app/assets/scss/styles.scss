@@ -143,6 +143,12 @@ a {
     color: var(--gray);
   }
 }
+.btn-primary{
+  border-radius: .5em;
+  background: var(--black);
+  color: var(--white);
+}
+
 h1{
   font-size: 3em;
   line-height: 1.1;

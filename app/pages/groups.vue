@@ -42,7 +42,6 @@ export default {
 
     this.rolesList = await this.fetchData(process.env.fakeUrl + `roles?group_id=${this.$route.query.group_id}`);
 
-    this.$store.commit('setShowSkeleton', false);
   },
   methods:{
     async changeMarkRole(role){

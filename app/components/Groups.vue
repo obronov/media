@@ -5,7 +5,7 @@
     @editItem="editItem($event)"
     />
     <div class="btn-add-groups">
-      <AppButton @click="$emit('click')" :title="'Add New Group'">Add New Group</AppButton>
+      <AppButton @click="$emit('click')" :title="'Add New Group'" class="btn-text">+ Add New Group</AppButton>
     </div>
   </div>
 </template>

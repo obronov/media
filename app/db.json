@@ -2,37 +2,37 @@
   "roles": [
     {
       "id": 1,
-      "group_id": 1,
+      "group_id": 3,
       "name": "Lorem Ipsum is simply",
-      "hashtags": "admin",
+      "hashtags": 1,
       "mark": true
     },
     {
       "id": 2,
-      "group_id": 2,
-      "name": "имя 2",
-      "hashtags": "God mode",
-      "mark": true
+      "group_id": 1638610494157,
+      "name": "имя 2s dfgdfg",
+      "hashtags": 2,
+      "mark": false
     },
     {
       "id": 3,
       "group_id": 2,
       "name": "name 3",
-      "hashtags": "God mode",
+      "hashtags": 3,
       "mark": true
     },
     {
       "id": 4,
       "group_id": 1,
       "name": "name 4",
-      "hashtags": "God mode",
+      "hashtags": 2,
       "mark": true
     },
     {
       "id": 5,
-      "group_id": 1,
+      "group_id": 2,
       "name": "media 3",
-      "hashtags": "God mode",
+      "hashtags": 2,
       "mark": true
     },
     {
@@ -44,6 +44,13 @@
     },
     {
       "id": 1638616030145,
+      "group_id": null,
+      "name": "New role",
+      "hashtags": null,
+      "mark": false
+    },
+    {
+      "id": 1638618144653,
       "group_id": null,
       "name": "New role",
       "hashtags": null,

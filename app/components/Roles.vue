@@ -2,7 +2,7 @@
   <div>
     <RolesMenu :rolesList="rolesList"/>
     <div class="btn-add-roles">
-      <AppButton @click="$emit('click')" :title="'Add New Group'">Add New Role</AppButton>
+      <AppButton @click="$emit('click')" :title="'Add New Role'" class="btn-text">+ Add New Role</AppButton>
     </div>
   </div>  
 </template>
