@@ -19,7 +19,7 @@
         @clearPrompt="promptList = null"
         />
       </header>
-      <RolesList :rolesList="rolesList" @changeMark="changeMarkRole($event)"/>
+      <RolesList  :rolesList="rolesList" :hashtagsList="hashtagsList" @changeMark="changeMarkRole($event)"/>
     </main>
   </div>
 </template>
@@ -33,10 +33,13 @@ export default {
     return{
       promptList: null,
       groupsList: null,
+      hashtagsList: null,
       rolesList: []
     }
   },
   async fetch(){
+
+    this.hashtagsList = await this.fetchData(process.env.fakeUrl + `hashtags`);
 
     this.groupsList = await this.fetchData(process.env.fakeUrl + `groups`);
 
@@ -102,8 +105,8 @@ export default {
     }
   },
   watch:{
-    $route(){
-
+    async $route(){
+      this.rolesList = await this.fetchData(process.env.fakeUrl + `roles?group_id=${this.$route.query.group_id}`);
     }
   }
 

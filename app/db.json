@@ -26,7 +26,7 @@
       "group_id": 1,
       "name": "name 4",
       "hashtags": 2,
-      "mark": true
+      "mark": false
     },
     {
       "id": 5,
@@ -37,9 +37,9 @@
     },
     {
       "id": 1638616025545,
-      "group_id": null,
-      "name": "New role",
-      "hashtags": null,
+      "group_id": 1,
+      "name": "New role 12",
+      "hashtags": 1,
       "mark": false
     },
     {

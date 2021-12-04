@@ -10,10 +10,11 @@
     </aside>
       <main class="page__main">
         <Form 
-        :controls="formData"
-        @oninputtext="updateControls($event)"
-        @saveRole="saveRole()"
-      />
+          v-if="!isEmptyArr(rolesList)" 
+          :controls="formData"
+          @oninputtext="updateControls($event)"
+          @saveRole="saveRole()"
+        />
       </main>
   </div>
 </template>
@@ -171,6 +172,11 @@ export default {
       }
 
       return this.controls
+    }
+  },
+  watch:{
+    async $route(){
+      this.role = await this.fetchData(process.env.fakeUrl + `roles?id=${this.$route.query.role_id}`);
     }
   }
 }

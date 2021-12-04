@@ -9,7 +9,7 @@
       <span class="role-marker__icon"></span>
     </label>
     <div class="role__name">{{role.name}}</div>
-    <div class="btn role__btn-hashtags">{{role.hashtags}}</div>
+    <div class="btn role__btn-hashtags">{{hashtags}}</div>
   </div>
 </template>
 
@@ -18,12 +18,28 @@ import global from "~/mixins/global";
 export default {
   mixins: [global],
   props:{
-    role:  Object
+    role:  Object,
+    hashtagsList:  Array
   },
   methods:{
     changeMark(role){
       role.mark = !role.mark;
       this.$emit('changeMark', role)
+    }
+  },
+  computed:{
+    hashtags(){
+      let hashtag = '';
+      try {
+        this.hashtagsList.forEach(element => {
+          if(element.id == this.role.hashtags){
+            hashtag = element.name;
+          }
+        });
+      } catch (error) {
+        console.log(error)
+      }
+      return hashtag
     }
   }
 }

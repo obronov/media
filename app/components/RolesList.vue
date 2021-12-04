@@ -3,7 +3,7 @@
     <p v-if="isEmptyArr(rolesList)" class="roles-empty-text">No roles </p>
     <ul v-else class="roles-list">
       <li class="roles-list__item" v-for="role in rolesList" :key="role.id">
-        <RolesListItem :role="role" @changeMark="$emit('changeMark', $event)"/>
+        <RolesListItem :role="role" :hashtagsList="hashtagsList" @changeMark="$emit('changeMark', $event)"/>
       </li>
     </ul>
   </div>
@@ -14,7 +14,8 @@ import global from "~/mixins/global";
 export default {
   mixins: [global],
   props:{
-    rolesList:  Array
+    rolesList:  Array,
+    hashtagsList:  Array
   }
 }
 
