@@ -14,7 +14,7 @@
         <h1 class="page-title">Roles</h1>
         <Search 
         @getPrompt="getPrompt($event)" 
-        @getResultSearch="getResultSearch($event)" 
+        @getResultSearch="addGetParams('q', $event)" 
         :promptList="promptList"
         @clearPrompt="promptList = null"
         />
@@ -50,6 +50,41 @@ export default {
 
   },
   methods:{
+    deleteGetParams(arrKeys){
+      let query = this.$route.query;
+      let newQuery = {};
+
+      for (const key in query) {
+        if (Object.hasOwnProperty.call(query, key)) {
+          if(!arrKeys.includes(key)){
+            newQuery[key] = query[key]
+          }
+        }
+      }
+
+      this.$router.push({ query: newQuery});
+
+      let promise = new Promise((resolve, reject)=> {
+        resolve(newQuery)
+        reject(new Error())
+      });
+
+      return promise
+    },
+    addGetParams(getKey, getValue){
+      let query = this.$route.query;
+      let newQuery = {};
+
+      for (const key in query) {
+        if (Object.hasOwnProperty.call(query, key)) {
+          newQuery[key] = query[key]
+        }
+      }
+
+      newQuery[getKey] = getValue
+
+      this.$router.push({ query: newQuery});
+    },
     parseGetParams(){
       let query = this.$route.query;
       let arrQuery = []
@@ -83,19 +118,23 @@ export default {
 
       return '?' + arrQuery.join('&');
     },
-    setQuerySorting(valueSorting){
+    async setQuerySorting(valueSorting){
       let sort = {}
       
-       for (const key in this.$route.query) {
-        if (Object.hasOwnProperty.call(this.$route.query, key)) {
-          const element = this.$route.query[key];
-          sort[key] = element
-        }
-      }
-      
-      sort.sorting = valueSorting;
+      let query = this.deleteGetParams(['q']).then(query => { 
+        
+          for (const key in query) {
+            if (Object.hasOwnProperty.call(query, key)) {
+              const element = query[key];
+              sort[key] = element
+            }
+          }
+          
+          sort.sorting = valueSorting;
 
-      this.$router.push({ query: sort});
+          this.$router.push({ query: sort});
+        });
+
     },
     async changeMarkRole(role){
       let response = await fetch(process.env.fakeUrl + `roles/${role.id}`, {
@@ -106,14 +145,8 @@ export default {
         body: JSON.stringify(role)
       });
     },
-    async getResultSearch(text){
-      let getParams = this.$route.query.group_id;
-      console.log('this.parseGetParams()', this.parseGetParams())
-      this.rolesList =  await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}&q=${text}`);
-    },
     async getPrompt(text){
-      let getParams = this.$route.query.group_id;
-
+ 
       if(text.length > 2){
         this.promptList =  await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}&q=${text}`);
       }else{
