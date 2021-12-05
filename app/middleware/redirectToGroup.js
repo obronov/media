@@ -1,6 +1,12 @@
 export default async function ({ app, store, route, redirect }) {
+  function isEmpty(obj){
+    for (let key in obj) {
+      return false;
+    }
+    return true;
+  }
 
-  if(route.query.group_id == undefined || route.query.group_id == null){
+  if(isEmpty(route.query)){
     const url = process.env.fakeUrl + `groups`;
     let item = {};
 

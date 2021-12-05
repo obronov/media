@@ -1,7 +1,7 @@
 <template>
   <form class="search" method="POST" action="/">
     <input type="text" class="search-input" v-model="prompt" @input="$emit('getPrompt', prompt)">
-    <button class="search-btn" type="button" title="search" @click="$emit('getResultSearch', prompt)">
+    <button class="search-btn" type="button" title="search" @click="getResultSearch(prompt)">
       <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px">
       <path d="M21,3C11.6,3,4,10.6,4,20s7.6,17,17,17s17-7.6,17-17S30.4,3,21,3z M21,33c-7.2,0-13-5.8-13-13c0-7.2,5.8-13,13-13c7.2,0,13,5.8,13,13C34,27.2,28.2,33,21,33z"/>
       <path fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="6" d="M31.2 31.2L44.5 44.5"/>
@@ -31,6 +31,10 @@ export default {
     }
   },
   methods:{
+    getResultSearch(prompt){
+      this.$emit('getResultSearch', prompt)      
+      this.prompt = ''
+    },
     useHint(value){
       this.prompt = value;
       this.$emit('clearPrompt')
