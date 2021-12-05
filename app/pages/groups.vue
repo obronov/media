@@ -19,7 +19,7 @@
         @clearPrompt="promptList = null"
         />
         <div class="sort" v-if="!isEmptyArr(sortList)">
-          <Sorting :sortList="sortList" @onSort="setQuerySorting($event)"/>
+          <Sorting :sortList="sortList" :currentValue="currentSortingValue" @onSort="setQuerySorting($event)"/>
         </div>
       </header>
       <RolesList  :rolesList="rolesList" :hashtagsList="hashtagsList" @changeMark="changeMarkRole($event)"/>
@@ -146,12 +146,16 @@ export default {
       });
     },
     async getPrompt(text){
- 
+
+    let query = this.deleteGetParams(['q']).then(async query => { 
       if(text.length > 2){
+        
         this.promptList =  await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}&q=${text}`);
       }else{
         this.promptList = null;
       }
+    });
+
     },
     async editGroup(item){
       let data = {
@@ -188,6 +192,16 @@ export default {
     }
   },
   computed:{    
+    currentSortingValue(){
+      let currentValue = '';
+      if(this.$route.query.sorting){
+        currentValue = this.$route.query.sorting
+      }else{
+        currentValue = 'all'
+      }
+
+      return currentValue
+    },
     sortList(){
       let sort = [
           {

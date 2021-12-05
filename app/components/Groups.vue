@@ -18,7 +18,6 @@ export default {
   },
   methods:{
     editItem(item){
-      console.log('item Groups', item)
       this.$emit("editItem", item)
     }
   }

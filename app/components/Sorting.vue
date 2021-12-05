@@ -1,7 +1,7 @@
 <template>
   <select 
       name="sort" 
-      value="" 
+      :value="currentValue" 
       @change="onChange($event.target.value)"
       class="control-input"
     >
@@ -17,7 +17,8 @@
 
 export default {
   props:{
-    sortList: Array
+    sortList: Array,
+    currentValue: String
   },
   methods:{
     onChange(value){
