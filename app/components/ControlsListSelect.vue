@@ -18,6 +18,7 @@
         :value="item.id"
       >{{item.name}}</option>
     </select>
+    <div class="control-error" v-if="options.error">{{options.error}}</div>
   </div>
 </template>
 
@@ -58,5 +59,11 @@ export default {
   &.control-input_error{
     border-color: var(--red);
   }
+}
+.control-error{
+  font-size: 1.2em;
+  line-height: 1;
+  margin: .5em 0 0;
+  color: var(--red);
 }
 </style>

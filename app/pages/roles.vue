@@ -84,6 +84,40 @@ export default {
 
   },
   methods:{
+    resetError(controls){
+      controls.forEach(element => {
+        element.error = ''
+      });
+    },
+    validateForm(data){
+      let valid = false;
+      let errorText = 'Required to fill';
+
+      this.controls.forEach(element => {
+ 
+        if(element.validation.required){
+          
+          if(element.value){
+            element.error = ''
+          }else{
+            element.error = errorText
+          }
+          
+        }
+        
+      });
+
+      for (let element of this.controls){
+        valid = true;
+
+        if(element.error){
+          valid = false;
+          break;
+        }
+      };
+      
+      return valid;
+    },
     async saveRole(){
       let id = this.$route.query.role_id;
       let data = {
@@ -94,33 +128,51 @@ export default {
         "mark": false
       }
 
-      this.saved = false;
-
-      this.controls.forEach(element => {
+      if(this.validateForm(this.controls)){
         
-        if(element.key == 'name'){
-            data.name = element.value;
-          } 
+        this.saved = false;
 
-        if(element.key == 'hashtags'){
-          data.hashtags = Number(element.value);
+        this.controls.forEach(element => {
+          
+          if(element.key == 'name'){
+              data.name = element.value;
+            } 
+
+          if(element.key == 'hashtags'){
+            data.hashtags = Number(element.value);
+          }
+
+          if(element.type == 'select'){
+            data.group_id = Number(element.value);
+          }
+
+        });
+
+        let response = await fetch(process.env.fakeUrl + `roles/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }); 
+
+        if(response.ok){
+          let json = await response.json();
+          this.updateRole(json);
+          this.saved = true;
         }
+        
+      }
 
-        if(element.type == 'select'){
-          data.group_id = Number(element.value);
+
+    },
+    updateRole(role){
+      this.rolesList.forEach(element => {
+        
+        if(element.id == role.id){
+          element.name = role.name
         }
-
       });
-
-      let response = await fetch(process.env.fakeUrl + `roles/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }); 
-
-      this.saved = true;
     },
     updateControls(item){
       this.controls.forEach(element => {
@@ -182,6 +234,7 @@ export default {
     async $route(){
       this.saved = false;
       this.role = await this.fetchData(process.env.fakeUrl + `roles?id=${this.$route.query.role_id}`);
+      await this.resetError(this.controls);
     }
   }
 }

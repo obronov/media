@@ -11,8 +11,9 @@
       :type="options.type" 
       :value="options.value" 
       :placeholder="options.placeholder" 
-      @input="$emit('oninput', {value: $event.target.value, key: options.key})"
+      @input="oninput($event.target.value, options.key)"
     >
+    <div class="control-error" v-if="options.error">{{options.error}}</div>
   </div>
 </template>
 
@@ -21,6 +22,13 @@
 export default {
   props:{
     options: Object
+  },
+  methods:{
+    oninput(value, key){
+      value = value.trim();
+
+      this.$emit('oninput', {value: value, key: key})
+    }
   }
 }
 
@@ -53,5 +61,11 @@ export default {
   &.control-input_error{
     border-color: var(--red);
   }
+}
+.control-error{
+  font-size: 1.2em;
+  line-height: 1;
+  margin: .5em 0 0;
+  color: var(--red);
 }
 </style>

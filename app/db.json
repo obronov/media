@@ -3,16 +3,16 @@
     {
       "id": 1,
       "group_id": 1,
-      "name": "Lorem Ipsum is simply",
-      "hashtags": 3,
+      "name": "namejjhk",
+      "hashtags": 1,
       "mark": false
     },
     {
       "id": 2,
       "group_id": 1,
-      "name": "имя 2s dfgdfg",
-      "hashtags": 2,
-      "mark": true
+      "name": "name 2",
+      "hashtags": 1,
+      "mark": false
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
     {
       "id": 5,
       "group_id": 1,
-      "name": "media 3",
+      "name": "",
       "hashtags": 2,
       "mark": false
     },
@@ -51,9 +51,23 @@
     },
     {
       "id": 1638618144653,
-      "group_id": null,
-      "name": "New role",
-      "hashtags": null,
+      "group_id": 1638536775201,
+      "name": "bsdfdsf",
+      "hashtags": 2,
+      "mark": false
+    },
+    {
+      "id": 1638684034442,
+      "group_id": 1,
+      "name": "  ",
+      "hashtags": 1,
+      "mark": false
+    },
+    {
+      "id": 1638684192801,
+      "group_id": 2,
+      "name": "55fddf",
+      "hashtags": 1,
       "mark": false
     }
   ],

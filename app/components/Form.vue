@@ -35,7 +35,8 @@ export default {
   max-width: 50em;
   border-radius: 1em;
   background: var(--gray);
-  padding: 3em;
+  padding: 4em 3em;
+  min-height: 50vh;
 }
 .btn-save-control{
   margin: 3em 0 0;
