@@ -1,6 +1,6 @@
 <template>
   <div class="header-desktop container">
-    <div class="header-desktop__title">Permission</div>
+    <div class="header-desktop__title">{{translate('permission')}}</div>
     <nav class='header-desktop__nav'>
       <ul class="nav-items" v-if="!isEmptyArr(menu)">
         <li class="nav-items__item" v-for="(item, index) in menu" :key="`nav${index}`">

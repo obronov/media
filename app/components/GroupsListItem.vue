@@ -2,7 +2,8 @@
   <div class='item-group' 
   :class="{
     'item-group_isActive': $route.query.group_id == item.id,
-    'item-group_edit': editMode
+    'item-group_edit': editMode,
+    'item-group_isMobile': !$device.isDesktop
     }">
     <NuxtLink 
       v-if="!editMode"
@@ -19,7 +20,7 @@
     type="text"
     v-model="item.name">
 
-    <button class='item-group__btn-edit' type="button" @click="editItem(item)">
+    <button class='item-group__btn-edit' type="button" @click="editItem(item)" :title="titleBtn">
       <svg v-if="!editMode" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px">
         <path d="M14.5 5.5L3 17 3 21 7 21 18.5 9.5zM21.707 4.879l-2.586-2.586c-.391-.391-1.024-.391-1.414 0L16 4l4 4 1.707-1.707C22.098 5.902 22.098 5.269 21.707 4.879z"/>
       </svg>
@@ -32,8 +33,9 @@
 </template>
 
 <script>
-
+import global from "~/mixins/global";
 export default {
+  mixins: [global],
   props:{
     item: Object
   },
@@ -54,6 +56,20 @@ export default {
         this.editMode = true;
       }
     }
+  },
+  computed:{
+    titleBtn(){
+      let title = '';
+
+      if(this.editMode){
+        title = this.translate('save')
+      }else{
+        title = this.translate('edit_name_group')
+      }
+
+      return title
+    }
+
   }
 }
 
@@ -61,7 +77,7 @@ export default {
 
 <style lang='scss' scoped>
 .item-group{
-  font-size: 1rem;
+  font-size: 1em;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 0 1em;
@@ -83,6 +99,13 @@ export default {
   }
   &.item-group_edit .item-group__name{
     border-color: var(--gray);
+  }
+  &.item-group_isMobile{
+    margin: 0 0 0.4em;
+    &.item-group_isActive{
+      position: relative;
+      border: .3em solid var(--black);
+    }
   }
 }
 .item-group__name{

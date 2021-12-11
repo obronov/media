@@ -2,14 +2,15 @@
   <div>
     <RolesMenu :rolesList="rolesList"/>
     <div class="btn-add-roles">
-      <AppButton @click="$emit('click')" :title="'Add New Role'" class="btn-text">+ Add New Role</AppButton>
+      <AppButton @click="$emit('click')" :title="translate('add_new_role')" class="btn-text">+ {{translate('add_new_role')}}</AppButton>
     </div>
   </div>  
 </template>
 
 <script>
-
+import global from "~/mixins/global";
 export default {
+  mixins: [global],
   props:{
     rolesList: Array
   }

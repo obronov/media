@@ -9,13 +9,14 @@
       v-for="(item, index) in sortList" 
       :key="index"
       :value="item.id"
-    >Show {{item.name}}</option>
+    >{{translate('prefix_sort') + ' ' + item.name}}</option>
   </select>
 </template>
 
 <script>
-
+import global from "~/mixins/global";
 export default {
+  mixins: [global],
   props:{
     sortList: Array,
     currentValue: String

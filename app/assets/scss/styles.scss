@@ -105,13 +105,15 @@ a {
 .page{
   display: grid;
   grid-template-columns: 3fr 9fr;
-  margin: 1em auto;
+  margin: 1.6em auto;
+  font-size: 1rem;
+  overflow: hidden;
 }
 .page__main{ 
   background: var(--white);
   border-left: .3em solid var(--black);
-  padding: 0 0 0 2em;
-  font-size: 1rem;
+  padding: 0 0 0 3.2em;
+  font-size: 1em;
 }
 .btn{
   font-size: 1.6em;
@@ -169,7 +171,92 @@ h1{
   padding: 1em 0;
   display: grid;
   grid-template-columns: 1fr auto auto;
-  grid-gap: 0 2em;
+  grid-gap: 2em;
   align-items: center;
   justify-content: space-between;
+  margin: 0 0 3em;
+}
+
+.page_isMobile{
+  grid-template-columns: 1fr;
+  position: relative;
+  margin: 0 auto;
+}
+.page__sidebar_isMobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: var(--bright_gray);
+  will-change: transform;
+  transform: translate3d(-100%, 0, 0);
+  transition: .3s;
+  padding: 2em 2em 2em;
+  width: 35em;
+  &.page__sidebar_show{
+    transform: translate3d(0, 0, 0);
+  }
+}
+.page__main_isMobile {
+  padding: 0;
+  border: none;
+}
+.page-header_isMobile{
+  grid-template-columns: auto 1fr auto auto;
+  
+}
+.btn-sidebar-show{
+  font-size: 1em;
+  padding: 0;
+  border: none;
+  background: none;
+  width: 3em;
+  height: 3em;
+  & svg{
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: var(--black);
+    transition: 0.3s;
+  }
+}
+.btn-sidebar-close{
+  margin: 0 0 1em auto;
+  display: block;
+}
+@media screen and (max-width: 1200px){
+  .page{
+    font-size: .9rem;
+  }
+}
+@media screen and (max-width: 992px){
+  .page{
+    font-size: .8rem;
+  }
+
+}
+@media screen and (max-width: 768px){
+  .page{
+    font-size: .7rem;
+  }
+
+}
+@media screen and (max-width: 576px){
+  .page-header_isMobile{
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1em;
+  }
+  .sort{
+    grid-column: 3;
+    justify-self: end;
+  }
+  .page-title_isMobile {
+    grid-row: 2;
+  }
+  .btn-sidebar-show {
+    grid-row: 2;
+  }
+  .page__search_isMobile{
+    grid-column: 3;
+  }
 }

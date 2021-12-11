@@ -1,6 +1,9 @@
 <template>
-  <div class="page container">
-    <aside class="page__sidebar">
+  <div class="page container" :class="{page_isMobile: !$device.isDesktop}">
+    <Sidebar 
+      :showSidebar="$store.state.showSidebar"
+      @closeSidebar="$store.commit('setShowSidebar', false)"
+    >
       <Groups 
         class="groups"
         v-if="!isEmptyArr(groupsList)" 
@@ -8,15 +11,20 @@
         @editItem="editGroup($event)"
         @click="addGroup()"
       />
-    </aside>
-    <main class="page__main">
-      <header class="page-header">
-        <h1 class="page-title">Roles</h1>
+    </Sidebar>
+    <main class="page__main" :class="{page__main_isMobile: !$device.isDesktop}">
+      <header class="page-header" :class="{'page-header_isMobile': !$device.isDesktop}">
+        <button type="button"  v-if="!$device.isDesktop" class='btn-sidebar-show' @click="$store.commit('setShowSidebar', true)">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-5025d0ea=""><rect x="4" y="7" width="22.8862" height="2.44443" rx="1" data-v-5025d0ea=""></rect> <rect x="4" y="12.7786" width="22.8862" height="2.44443" rx="1" data-v-5025d0ea=""></rect> <rect x="4" y="18.5555" width="22.8862" height="2.44443" rx="1" data-v-5025d0ea=""></rect></svg>
+        </button>
+        <h1 class="page-title" :class="{'page-title_isMobile': !$device.isDesktop}">{{translate('title_page_groups')}}</h1>
         <Search 
-        @getPrompt="getPrompt($event)" 
-        @getResultSearch="addGetParams('q', $event)" 
-        :promptList="promptList"
-        @clearPrompt="promptList = null"
+          class="page__search"
+          :class="{page__search_isMobile: !$device.isDesktop}"
+          @getPrompt="getPrompt($event)" 
+          @getResultSearch="addGetParams('q', $event)" 
+          :promptList="promptList"
+          @clearPrompt="promptList = null"
         />
         <div class="sort" v-if="!isEmptyArr(sortList)">
           <Sorting :sortList="sortList" :currentValue="currentSortingValue" @onSort="setQuerySorting($event)"/>
@@ -232,6 +240,6 @@ export default {
 </script>
 <style lang='scss' scoped>
 .groups{
-  font-size: 1rem;
+  font-size: 1em;
 }
 </style>

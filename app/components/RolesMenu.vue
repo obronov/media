@@ -3,6 +3,7 @@
     <li class="role-list__item" v-for="role in rolesList" :key="role.id">
       <NuxtLink 
         class="item-role__name"
+        :class="{'item-role__name_isMobile': !$device.isDesktop}"
         :to="{query: { role_id: role.id }}"
       >
         <span class="item-role__name-text">
@@ -28,9 +29,10 @@ export default {
   padding: 0;
   margin: 0;
   list-style: none;
+  font-size: 1em;
 }
 .item-role__name{
-  font-size: 1rem;
+  font-size: 1em;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 0 1em;
@@ -53,5 +55,12 @@ export default {
     line-height: 1.1;
     
   }
+  &.item-role__name_isMobile{
+    margin: 0 0 0.4em;
+    &.nuxt-link-exact-active{
+      border: .3em solid var(--black);
+    }
+  }
+
 }
 </style>

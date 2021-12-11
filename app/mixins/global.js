@@ -1,5 +1,8 @@
 export default{
   methods:{
+    translate(key){
+      return this.$store.state.vocabulary[this.$store.state.lang][key];
+    },
     isEmptyArr(arr){
       if(arr != undefined && arr.length > 0){
         return false;

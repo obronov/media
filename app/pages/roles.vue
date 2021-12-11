@@ -1,14 +1,23 @@
 <template>
-  <div class="page container">
-    <aside class="page__sidebar">
+  <div class="page container" :class="{page_isMobile: !$device.isDesktop}">
+    <Sidebar 
+      :showSidebar="$store.state.showSidebar"
+      @closeSidebar="$store.commit('setShowSidebar', false)"
+    >
       <Roles 
         class="roles"
         v-if="!isEmptyArr(rolesList)" 
         :rolesList="rolesList"
         @click="addRole()"
       />
-    </aside>
-      <main class="page__main">
+    </Sidebar>
+      <main class="page__main" :class="{page__main_isMobile: !$device.isDesktop}">
+        <header class="page-header" :class="{'page-header_isMobile': !$device.isDesktop}">
+          <button type="button"  v-if="!$device.isDesktop" class='btn-sidebar-show' @click="$store.commit('setShowSidebar', true)">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-5025d0ea=""><rect x="4" y="7" width="22.8862" height="2.44443" rx="1" data-v-5025d0ea=""></rect> <rect x="4" y="12.7786" width="22.8862" height="2.44443" rx="1" data-v-5025d0ea=""></rect> <rect x="4" y="18.5555" width="22.8862" height="2.44443" rx="1" data-v-5025d0ea=""></rect></svg>
+          </button>
+          <h1 class="page-title" :class="{'page-title_isMobile': !$device.isDesktop}">{{translate('title_page_role')}}</h1>
+        </header>
         <Form 
           v-if="!isEmptyArr(rolesList)" 
           :controls="formData"
@@ -243,6 +252,6 @@ export default {
 
 <style lang='scss' scoped>
 .roles{
-  font-size: 1rem;
+  font-size: 1em;
 }
 </style>

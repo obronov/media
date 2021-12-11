@@ -1,6 +1,6 @@
 <template>
   <form class="search" method="POST" action="/">
-    <input type="text" class="search-input" v-model="prompt" @input="$emit('getPrompt', prompt)">
+    <input type="text" class="search-input" v-model="prompt" @input="$emit('getPrompt', prompt)" :placeholder="translate('placeholder_search')">
     <button class="search-btn" type="button" title="search" @click="getResultSearch(prompt)">
       <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px">
       <path d="M21,3C11.6,3,4,10.6,4,20s7.6,17,17,17s17-7.6,17-17S30.4,3,21,3z M21,33c-7.2,0-13-5.8-13-13c0-7.2,5.8-13,13-13c7.2,0,13,5.8,13,13C34,27.2,28.2,33,21,33z"/>
@@ -49,7 +49,7 @@ export default {
   display: inline-grid;
   grid-template-columns: 1fr auto;
   grid-gap: 0 .5em;
-  font-size: 1rem;
+  font-size: 1em;
   border: 0.3em solid var(--black);
   border-radius: 1em;
   align-items: center;

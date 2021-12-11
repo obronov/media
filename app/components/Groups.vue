@@ -4,15 +4,16 @@
     :groupsList="groupsList"
     @editItem="editItem($event)"
     />
-    <div class="btn-add-groups">
-      <AppButton @click="$emit('click')" :title="'Add New Group'" class="btn-text">+ Add New Group</AppButton>
+    <div class="btn-add-groups"> 
+      <AppButton @click="$emit('click')" :title="translate('add_new_group')" class="btn-text">+ {{translate('add_new_group')}}</AppButton>
     </div>
   </div>
 </template>
 
 <script>
-
+import global from "~/mixins/global";
 export default {
+  mixins: [global],
   props:{
     groupsList: Array
   },

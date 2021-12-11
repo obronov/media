@@ -11,16 +11,17 @@
         class="btn-primary"
         :class="{'btn-success': saved}"
       >
-        <span v-if="saved">Saved</span>
-        <span v-else>Save</span>        
+        <span v-if="saved">{{translate('saved')}}</span>
+        <span v-else>{{translate('save')}}</span>        
       </AppButton>
     </div>
   </form>
 </template>
 
 <script>
-
+import global from "~/mixins/global";
 export default {
+  mixins: [global],
   props:{
     controls: Array,
     saved: Boolean
@@ -31,7 +32,7 @@ export default {
 
 <style lang='scss' scoped>
 .form{
-  font-size: 1rem;
+  font-size: 1em;
   max-width: 50em;
   border-radius: 1em;
   background: var(--gray);

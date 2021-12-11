@@ -1,7 +1,7 @@
 <template>
   <header class="header">
-    <HeaderDesktop v-if="$device.isDesktop" :menu="menu"/>
-    <HeaderMobile v-if="!$device.isDesktop" :menu="menu"/>
+    <HeaderDesktop v-if="$device.isDesktop" :menu="menu[$store.state.lang]"/>
+    <HeaderMobile v-if="!$device.isDesktop" :menu="menu[$store.state.lang]"/>
   </header>
 </template>
 
@@ -10,16 +10,28 @@
 export default {
   data(){
     return{
-      menu:[
-        {
-          "name": "groups",
-          "alias": "groups",
-        },
-        {
-          "name": "roles",
-          "alias": "roles",
-        }
-      ]
+      menu:{
+        'ru':[
+          {
+            "name": "Группы",
+            "alias": "groups",
+          },
+          {
+            "name": "Роли",
+            "alias": "roles",
+          }
+        ],
+        'en':[
+          {
+            "name": "groups",
+            "alias": "groups",
+          },
+          {
+            "name": "roles",
+            "alias": "roles",
+          }
+        ]
+      }
     }
   }
 }
