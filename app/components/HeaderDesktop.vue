@@ -1,6 +1,7 @@
 <template>
   <div class="header-desktop container">
     <div class="header-desktop__title">{{translate('permission')}}</div>
+    <AppButton @click="$store.dispatch('changeLang')" :title="translate('lang')" class="btn-text">{{translate('lang')}}</AppButton>
     <nav class='header-desktop__nav'>
       <ul class="nav-items" v-if="!isEmptyArr(menu)">
         <li class="nav-items__item" v-for="(item, index) in menu" :key="`nav${index}`">
@@ -27,7 +28,7 @@ export default {
   font-size: 1rem;
   padding: 2em 15px;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto 1fr;
   grid-gap: 0 3em;
   align-items: center;
   border-bottom: .3em solid var(--black);
@@ -67,6 +68,9 @@ export default {
   &:focus{
     border-color: var(--black);
   }
+}
+.btn-lang{
+
 }
 @media screen and (max-width: 1200px){
   .header-desktop{

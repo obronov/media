@@ -15,7 +15,7 @@ export default {
 
 <style lang='scss' scoped>
 .welcome{
-  font-size: 1rem;
+  font-size: 1em;
   border-radius: 1em;
   background: var(--white);
   padding: 5em;
@@ -23,14 +23,17 @@ export default {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
+  margin: 5px;
 }
 .welcome__title{
   font-size: 5em;
   margin: 0 0 .6em;
+  text-align: center;
 }
 .btn-login{
   padding: .5em 2em ;
   border-radius: 1em;
   margin: 0 auto;
 }
+
 </style>

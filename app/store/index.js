@@ -1,9 +1,7 @@
 
 export const state = () => ({
-  showSkeleton: false,
   showSidebar: false,
-  token: null,
-  lang: 'ru',
+  lang: 'en',
   vocabulary:{
     'ru':{
       'saved': 'Сохранено',
@@ -42,13 +40,23 @@ export const state = () => ({
 
 
 export const mutations = {
-  setShowSkeleton(state, value){
-    state.showSkeleton = value;
-  },
   setShowSidebar(state, value){
     state.showSidebar = value;
   },
-  setToken(state, value){
-    state.token = value;
+  setLang(state, value){
+    state.lang = value;
   }
+}
+
+export const actions = {
+  changeLang(store){
+    let lang = store.state.lang;
+
+    if(lang == 'ru'){
+      store.commit('setLang', 'en');
+    }else{
+      store.commit('setLang', 'ru');
+    }
+    
+  }  
 }

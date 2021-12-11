@@ -1,6 +1,7 @@
 <template>
   <div class="header-mobile container">
     <div class="header-mobile__title">{{translate('permission')}}</div>
+    <AppButton @click="$store.dispatch('changeLang')" :title="translate('lang')" class="btn-text">{{translate('lang')}}</AppButton>
     <button class="header-mobile__btnMenu" type="button"  v-if="!isEmptyArr(menu)" @click="showMenu = !showMenu">
       <svg v-if="!showMenu" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="4" y="7" width="22.8862" height="2.44443" rx="1"/>
@@ -47,10 +48,9 @@ export default {
   font-size: .5rem;
   padding: 2em 15px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto 1fr;
   grid-gap: 0 3em;
   align-items: center;
-  justify-content: space-between;
   border-bottom: .3em solid var(--black);
   position: relative;
 }
@@ -67,6 +67,7 @@ export default {
   background: none;
   width: 3em;
   height: 3em;
+  justify-self: end;
   & svg{
     display: block;
     width: 100%;
@@ -89,9 +90,11 @@ export default {
   padding: 3em;
   transition: .3s;
   opacity: 0;
+  visibility: hidden;
+  z-index: 20;
   &.active{
     opacity: 1;
-    z-index: 20;
+    visibility: visible;
   }
 }
 .nav-items{
