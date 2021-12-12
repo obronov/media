@@ -171,7 +171,6 @@ export default {
     async getPrompt(text){
     let query = this.deleteGetParams(['q']).then(async query => { 
       if(text.length > 2){
-        console.log('query', query)
         this.promptList =  await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}&q=${text}`);
       }else{
         this.promptList = null;
@@ -244,9 +243,7 @@ export default {
   },
   watch:{
     async $route(){
-      console.log('смена роутов')
-      /* this.rolesList = await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}`); */
-console.log('this.parseGetParams() 2', this.parseGetParams())
+
       try {
         let response  =  await fetch(process.env.fakeUrl + `roles${this.parseGetParams()}`)
 

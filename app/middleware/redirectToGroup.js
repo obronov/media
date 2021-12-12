@@ -17,7 +17,7 @@ export default async function ({ app, store, route, redirect }) {
       console.error(error)
     }
 
-    redirect(`/groups?group_id=${item[0].id}`)
+    redirect(`/groups?group_id=${item[0].id}&_page=1&_limit=${store.state.countElement}`)
 
   }
 
