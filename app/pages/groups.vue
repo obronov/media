@@ -31,13 +31,16 @@
         </div>
       </header>
       <RolesList  :rolesList="rolesList" :hashtagsList="hashtagsList" @changeMark="changeMarkRole($event)"/>
+      <Pagination :countPage="countElement" :countAll="allCountRoles" v-if="allCountRoles > countElement && countElement"/>
     </main>
   </div>
 </template>
 
 <script>
 import global from "~/mixins/global";
+import Pagination from '../components/Pagination.vue';
 export default {
+  components: { Pagination },
   middleware:['redirectToGroup'],  
   mixins: [global],
   data(){
@@ -45,7 +48,9 @@ export default {
       promptList: null,
       groupsList: null,
       hashtagsList: null,
-      rolesList: []
+      rolesList: [],
+      allCountRoles: null,
+      countElement: this.$store.state.countElement
     }
   },
   async fetch(){
@@ -54,7 +59,16 @@ export default {
 
     this.groupsList = await this.fetchData(process.env.fakeUrl + `groups`);
 
-    this.rolesList = await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}`);
+    try {
+      let response  =  await fetch(process.env.fakeUrl + `roles${this.parseGetParams()}&_page=1&_limit=${this.countElement}`)
+
+      this.allCountRoles = response.headers.get('X-Total-Count');
+      this.rolesList = await response.json();
+      
+
+    } catch (error) {
+      console.error(`Страница ${this.$route.fullPath}: `,  error)
+    } 
 
   },
   methods:{
@@ -129,6 +143,7 @@ export default {
     async setQuerySorting(valueSorting){
       let sort = {}
       
+      
       let query = this.deleteGetParams(['q']).then(query => { 
         
           for (const key in query) {
@@ -139,7 +154,7 @@ export default {
           }
           
           sort.sorting = valueSorting;
-
+          sort._page = 1
           this.$router.push({ query: sort});
         });
 
@@ -154,10 +169,8 @@ export default {
       });
     },
     async getPrompt(text){
-
     let query = this.deleteGetParams(['q']).then(async query => { 
       if(text.length > 2){
-        
         this.promptList =  await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}&q=${text}`);
       }else{
         this.promptList = null;
@@ -230,8 +243,18 @@ export default {
   },
   watch:{
     async $route(){
-      console.log('смена роутов')
-      this.rolesList = await this.fetchData(process.env.fakeUrl + `roles${this.parseGetParams()}`);
+
+      try {
+        let response  =  await fetch(process.env.fakeUrl + `roles${this.parseGetParams()}`)
+
+        this.allCountRoles = response.headers.get('X-Total-Count');
+        this.rolesList = await response.json();
+
+      } catch (error) {
+        console.error(`Страница ${this.$route.fullPath}: `,  error)
+      } 
+
+
       this.promptList = null
     }
   }

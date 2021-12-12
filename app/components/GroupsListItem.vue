@@ -8,7 +8,7 @@
     <NuxtLink 
       v-if="!editMode"
       class='item-group__name item-group__name_link' 
-      :to="{query: { group_id: item.id }}"
+      :to="{query: { group_id: item.id, _page: 1, _limit: $store.state.countElement }}"
     >
       {{item.name}}
     </NuxtLink>

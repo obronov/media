@@ -44,16 +44,16 @@
     },
     {
       "id": 1638616030145,
-      "group_id": null,
+      "group_id": 1,
       "name": "New role",
-      "hashtags": null,
+      "hashtags": 1,
       "mark": false
     },
     {
       "id": 1638618144653,
-      "group_id": 1638536775201,
+      "group_id": 1,
       "name": "bsdfdsf",
-      "hashtags": 2,
+      "hashtags": 1,
       "mark": false
     },
     {
@@ -65,7 +65,7 @@
     },
     {
       "id": 1638684192801,
-      "group_id": 2,
+      "group_id": 1,
       "name": "55fddf",
       "hashtags": 1,
       "mark": false
