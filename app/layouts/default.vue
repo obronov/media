@@ -23,7 +23,6 @@ export default {
   },
   watch:{
     $route(){
-      this.$store.commit('setShowSkeleton', true);
       this.$store.commit('setShowSidebar', false);
     }
   }

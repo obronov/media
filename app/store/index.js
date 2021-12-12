@@ -2,6 +2,7 @@
 export const state = () => ({
   showSidebar: false,
   lang: 'en',
+  countElement: 2,
   vocabulary:{
     'ru':{
       'saved': 'Сохранено',
