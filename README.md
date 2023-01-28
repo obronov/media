@@ -1,4 +1,4 @@
-# vmedia
+# media
 
 ## Get started
 1. Клонировать репозиторий - **git clone https://github.com/obronov/media.git**
