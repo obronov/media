@@ -1,7 +1,7 @@
 # vmedia
 
 ## Get started
-1. Клонировать репозиторий - **git clone https://github.com/obronov/vmedia.git**
+1. Клонировать репозиторий - **git clone https://github.com/obronov/media.git**
 2. Перейти в папку проекта - **cd .\app**
 3. Установить зависимости - **npm i**
 4. Запустить проект - **npm run serve**
